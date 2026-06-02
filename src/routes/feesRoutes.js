@@ -1,48 +1,94 @@
-const express =
-require("express");
+// const express =
+// require("express");
 
-const router =
-express.Router();
+// const router =
+// express.Router();
+
+// const {
+
+// createStandardFees,
+
+// getAllStandardFees,
+
+// getStandardFeesById,
+
+// updateStandardFees,
+
+// deleteStandardFees
+
+// } = require(
+// "../controllers/StandardFeesController"
+// );
+
+// router.post(
+// "/create",
+// createStandardFees
+// );
+
+// router.get(
+// "/getall",
+// getAllStandardFees
+// );
+
+// router.get(
+// "/get/:id",
+// getStandardFeesById
+// );
+
+// router.put(
+// "/update/:id",
+// updateStandardFees
+// );
+
+// router.delete(
+// "/delete/:id",
+// deleteStandardFees
+// );
+
+// module.exports = router;
+const express = require("express");
+
+const router = express.Router();
 
 const {
 
-createStandardFees,
+createFees,
 
-getAllStandardFees,
+getAllFees,
 
-getStandardFeesById,
+getFeesById,
 
-updateStandardFees,
+updateFees,
 
-deleteStandardFees
+deleteFees
 
 } = require(
-"../controllers/StandardFeesController"
+"../controllers/feesController"
 );
 
 router.post(
 "/create",
-createStandardFees
+createFees
 );
 
 router.get(
 "/getall",
-getAllStandardFees
+getAllFees
 );
 
 router.get(
 "/get/:id",
-getStandardFeesById
+getFeesById
 );
 
 router.put(
 "/update/:id",
-updateStandardFees
+updateFees
 );
 
 router.delete(
 "/delete/:id",
-deleteStandardFees
+deleteFees
 );
 
 module.exports = router;
