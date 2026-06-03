@@ -23,8 +23,9 @@ const extraCurricularRoutes =require("./src/routes/ExtraCurricularStudentRoutes"
 
 const extraFeesRoutes =require("./src/routes/ExtraCurricularFeesRoutes");
 
-const standardFeesRoutes =require("./src/routes/StandardFeesRoutes"
-);
+const standardFeesRoutes =require("./src/routes/StandardFeesRoutes");
+
+const activityMasterRoutes =require("./src/routes/ActivityMasterRoutes");
 
 
 
@@ -39,6 +40,8 @@ app.use("/api/extracurricular",extraCurricularRoutes);
 app.use("/api/extracurricular-fees",extraFeesRoutes);
 
 app.use("/api/standardfees",standardFeesRoutes);
+
+app.use("/api/activity-master",activityMasterRoutes);
 
 /*MongoDB Connection*/
 
