@@ -295,11 +295,52 @@ Parse Activities
 
 if (req.body.activities) {
 
-  updateData.activities =
+  const newActivities =
 
     JSON.parse(
       req.body.activities
     );
+
+  const existingActivities =
+    student.activities;
+
+  for (const newActivity of newActivities) {
+
+    const alreadyExists =
+      existingActivities.some(
+
+        (activity) =>
+
+          activity.activityType ===
+            newActivity.activityType &&
+
+          activity.activityName ===
+            newActivity.activityName
+
+      );
+
+    if (alreadyExists) {
+
+      return res.status(400).json({
+
+        success: false,
+
+        message:
+          `${newActivity.activityName} Activity Already Added`
+
+      });
+
+    }
+
+  }
+
+  updateData.activities = [
+
+    ...existingActivities,
+
+    ...newActivities
+
+  ];
 
 }
     /*

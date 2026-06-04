@@ -150,13 +150,7 @@ Extra Amount Validation
 
 
 if(
-
-    Number(paidAmount)
-    
-    >
-    
-    Number(activity.fees)
-    
+Number(paidAmount)>Number(activity.fees)
     ){
     
     
@@ -300,8 +294,8 @@ if(
 
      
 
-gender:
-student.gender,
+      gender:
+      student.gender,
 
 
       phoneNumber:
@@ -358,24 +352,23 @@ student.gender,
 
     });
 
+    if (status === "Paid") {
 
-
-
-
-
+      activity.paymentStatus = "Paid";
+    
+      await student.save();
+    
+    }
+    
     res.status(201).json({
-
-
+    
       success:true,
-
-
+    
       message:
       "Fees Added Successfully",
-
-
+    
       data:fees
-
-
+    
     });
 
 
@@ -530,12 +523,6 @@ error:error.message
 
 
 };
-
-
-
-
-
-
 
 
 /*
@@ -769,6 +756,7 @@ await fees.save();
 
 
 
+
 res.status(200).json({
 
 success:true,
@@ -799,11 +787,6 @@ error:error.message
 
 
 };
-
-
-
-
-
 
 
 /*
@@ -867,14 +850,6 @@ error:error.message
 
 
 };
-
-
-
-
-
-
-
-
 
 /*
 EXPORT
