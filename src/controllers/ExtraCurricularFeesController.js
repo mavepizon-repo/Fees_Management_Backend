@@ -318,13 +318,11 @@ Number(paidAmount)>Number(activity.fees)
 
 
 
-      mainActivity:
-      activity.mainActivity,
-
-
-
-      subActivity:
-      activity.subActivity,
+      activityType:
+      activity.activityType,
+      
+      activityName:
+      activity.activityName,
 
 
 
