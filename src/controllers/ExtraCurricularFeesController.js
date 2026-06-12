@@ -66,11 +66,7 @@ async (req, res) => {
 
 
     }
-
-
-
-
-    /*
+  /*
     Find Activity
     */
 
@@ -148,36 +144,49 @@ async (req, res) => {
 Extra Amount Validation
 */
 
+if (
+  Number(paidAmount) >
+  Number(activity.fees)
+) {
 
-if(
-Number(paidAmount)>Number(activity.fees)
-    ){
-    
-    
-    const extraAmount =
-    
+  const extraAmount =
+
     Number(paidAmount)
-    
+
     -
-    
+
     Number(activity.fees);
-    
-    
-    
-    return res.status(400).json({
-    
-    
+
+  return res.status(400).json({
+
     success:false,
-    
-    
+
     message:
     `You are paying extra ₹${extraAmount}. Monthly fees is only ₹${activity.fees}`
-    
-    
-    });
-    
-    
-    }
+
+  });
+
+}
+
+/*
+Less Amount Validation
+*/
+
+if (
+  Number(paidAmount) <
+  Number(activity.fees)
+) {
+
+  return res.status(400).json({
+
+    success: false,
+
+    message:
+      `Full fees ₹${activity.fees} must be paid`
+
+  });
+
+}
 
 
 
@@ -188,17 +197,28 @@ Number(paidAmount)>Number(activity.fees)
     */
 
 
-    const count =
-    await ExtraFees.countDocuments();
+    const lastFee =
+await ExtraFees
+  .findOne()
+  .sort({ createdAt: -1 });
 
+let receiptId = "ECF1001";
 
+if (lastFee) {
 
-    const receiptId =
+  const lastNumber =
+    parseInt(
+      lastFee.receiptId.replace(
+        "ECF",
+        ""
+      )
+    );
 
+  receiptId =
     "ECF" +
+    (lastNumber + 1);
 
-    (1001 + count);
-
+}
 
 
 
